@@ -1,68 +1,105 @@
-# CodeIgniter 4 Application Starter
+# FreshStation Marketplace
 
-## What is CodeIgniter?
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen)](https://github.com/Mikusune/Marketplace_freshstation)
+[![Version](https://img.shields.io/badge/Version-v1.0.0-blue)](https://github.com/Mikusune/Marketplace_freshstation)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Platform e-commerce yang dirancang khusus untuk penjualan produk segar seperti sayuran, buah-buahan, dan daging. FreshStation menghubungkan penjual dengan konsumen, menyediakan sistem manajemen yang lengkap mulai dari inventaris hingga pengiriman.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Daftar Isi
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+- [Fitur Utama](#fitur-utama)
+- [Teknologi yang Digunakan](#teknologi-yang-digunakan)
+- [Panduan Instalasi](#panduan-instalasi)
+- [Struktur Proyek](#struktur-proyek)
+- [Penggunaan](#penggunaan)
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+---
 
-## Installation & updates
+## Fitur Utama
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+### Untuk Pelanggan (Customer)
+- **Pencarian & Penjelajahan Produk:** Cari dan filter produk berdasarkan kategori.
+- **Keranjang Belanja:** Tambah, perbarui, dan hapus produk dari keranjang.
+- **Proses Checkout:** Alur checkout yang mudah dengan integrasi pengiriman.
+- **Integrasi Pembayaran:** Mendukung pembayaran online melalui Midtrans.
+- **Manajemen Akun:** Kelola profil dan alamat pengiriman.
+- **Lacak Pesanan:** Lihat riwayat dan status pesanan.
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+### Untuk Administrator (Admin)
+- **Dashboard Analitik:** Ringkasan penjualan, pesanan, dan aktivitas toko.
+- **Manajemen Produk:** Tambah, edit, dan hapus produk beserta detailnya (harga, stok, gambar).
+- **Manajemen Pesanan:** Proses pesanan masuk, perbarui status pengiriman, dan lihat detail transaksi.
+- **Manajemen Pelanggan:** Lihat data pelanggan yang terdaftar.
+- **Konfigurasi Pengiriman:** Atur biaya pengiriman dengan integrasi RajaOngkir.
+- **Manajemen Promo:** Buat dan kelola kode promo untuk pelanggan.
+- **Laporan Penjualan:** Hasilkan laporan penjualan dalam periode tertentu.
 
-## Setup
+---
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+## Teknologi yang Digunakan
 
-## Important Change with index.php
+- **Backend:** PHP 8.1, CodeIgniter 4
+- **Frontend:** HTML, CSS, JavaScript, Bootstrap 5
+- **Database:** MySQL
+- **Manajemen Dependensi:** Composer
+- **Template Admin:** Stisla
+- **API Pihak Ketiga:**
+  - **Midtrans:** Untuk gerbang pembayaran (payment gateway).
+  - **RajaOngkir:** Untuk informasi biaya pengiriman.
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+---
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+## Panduan Instalasi
 
-**Please** read the user guide for a better explanation of how CI4 works!
+Ikuti langkah-langkah berikut untuk menjalankan proyek ini di lingkungan lokal Anda.
 
-## Repository Management
+### Prasyarat
+- PHP 8.1 atau lebih tinggi
+- Composer
+- Web Server (seperti Apache, Nginx, atau bawaan Laragon)
+- MySQL atau MariaDB
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+### Langkah-langkah Instalasi
+1.  **Clone repositori ini:**
+    ```bash
+    git clone https://github.com/Mikusune/Marketplace_freshstation.git
+    cd Marketplace_freshstation
+    ```
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+2.  **Install dependensi PHP:**
+    ```bash
+    composer install
+    ```
 
-## Server Requirements
+3.  **Konfigurasi Environment:**
+    - Salin file `env` menjadi `.env`.
+    - Buka file `.env` dan sesuaikan konfigurasi berikut:
+      - `app.baseURL = 'http://localhost:8080'` (atau sesuai URL lokal Anda)
+      - `database.default.hostname`, `database.default.database`, `database.default.username`, `database.default.password` sesuai dengan konfigurasi database Anda.
+      - Masukkan API key untuk `midtrans.serverKey` dan `rajaongkir.apiKey`.
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+4.  **Impor Database:**
+    - Buat database baru di MySQL dengan nama yang Anda tentukan di file `.env`.
+    - Impor file `freshstation.sql` ke dalam database yang baru saja Anda buat.
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+5.  **Jalankan Migrasi (Opsional):**
+    Jika ada pembaruan skema database yang belum ada di file `.sql`, jalankan migrasi.
+    ```bash
+    php spark migrate
+    ```
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+6.  **Jalankan Aplikasi:**
+    Gunakan server bawaan CodeIgniter untuk menjalankan aplikasi.
+    ```bash
+    php spark serve
+    ```
+    Aplikasi akan berjalan di `http://localhost:8080`.
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+---
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+## Penggunaan
+
+- **Halaman Pelanggan:** Dapat diakses langsung dari base URL (`/`).
+- **Halaman Login:** `/login`
+- **Halaman Admin:** `/admin/dashboard` (memerlukan login sebagai admin).
