@@ -1,0 +1,472 @@
+    <!--== SlideshowBg Area Start ==-->
+     <!-- banner section start -->
+        <!--== SlideshowBg Area Start ==-->
+        <div class="banner_section layout_padding">
+    <div class="container">
+      <div id="my_slider" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-md-6">
+                <h1 class="video_text">Welcome to</h1>
+                <h1 class="controller_text">Jual Beli Mobil Second Bekasi</h1>
+                <p class="banner_text">Selamat datang di Dashboard Jual Beli Mobil Second – Temukan, kelola, dan beli mobil impian Anda dengan mudah! 🚗</p>
+                <div class="shop_bt"><a href="<?php echo base_url('customer/data_mobil') ?>">Shop Now</a></div>
+              </div>
+              <div class="col-md-6">
+                <div class="image_1"><img src="<?php echo base_url() ?>assets/assets_shop/img/ps4.png"></div>
+            </div>
+          </div>
+          </div>
+         
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- banner section end -->
+    <!--== SlideshowBg Area End ==-->
+
+    <!--== Partner Area Start ==-->
+    <div id="partner-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="partner-content-wrap">
+                        <!-- Single Partner Start -->
+
+                      
+                        <!-- Single Partner End -->
+
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--== Partner Area End ==-->
+
+    <!--== Fun Fact Area Start ==-->
+    <section id="funfact-area" class="overlay section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-11 col-md-12 m-auto">
+                    <div class="funfact-content-wrap">
+                        <div class="row">
+                            <!-- Single FunFact Start -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-funfact">
+                                    <div class="funfact-icon">
+                                        <i class="fa fa-smile-o"></i>
+                                    </div>
+                                    <div class="funfact-content">
+                                        <p><span class="counter"></span>+</p>
+                                        <h4>CUSTOMER</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single FunFact End -->
+
+                            <!-- Single FunFact Start -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-funfact">
+                                    <div class="funfact-icon">
+                                        <i class="fa fa-gamepad"></i>
+                                    </div>
+                                    <div class="funfact-content">
+                                        <p><span class="counter"></span>+</p>
+                                        <h4>MOBIL TERSEDIA</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single FunFact End -->
+
+                            <!-- Single FunFact Start -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-funfact">
+                                    <div class="funfact-icon">
+                                        <i class="fa fa-bank"></i>
+                                    </div>
+
+                                    <div class="funfact-content">
+                                        <p><span class="counter">   </span>+</p>
+                                        <h4>PENYEDIA MOBIL</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single FunFact End -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--== Fun Fact Area End ==-->
+
+    <!--== Choose Car Area Start ==-->
+    <section id="choose-car" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <!-- Section Title Start -->
+                <div class="col-lg-12">
+                    <div class="section-title  text-center">
+                        <h3>Pilih Mobil Anda</h3>
+                        <span class="title-line"><i class="fa fa-gamepad"></i></span>
+                        <p>Mobil Pilihan Terbaik Untuk Memberikan Anda Kenyamanan</p>
+                    </div>
+                </div>
+                <!-- Section Title End -->
+            </div>
+
+            <div class="row">
+            <div class="row">
+    <!-- Choose Area Content Start -->
+    <div class="col-lg-12">
+        <div class="choose-ur-cars">
+            <div class="row">
+                <div class="col-lg-3">
+                    <!-- Choose Filtering Menu Start -->
+                    <div class="home2-car-filter">
+                        <a href="#" data-filter="*" class="active">all</a>
+
+                        <?php foreach ($types as $tp): ?>
+                            <a href="#" data-filter=".<?= $tp->kode_type ?>"><?= $tp->nama_type ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                    <!-- Choose Filtering Menu End -->
+                </div>
+    <!-- Choose Content-wrap -->
+    <div class="col-lg-9">
+    
+    <div class="row popular-car-gird">
+        <?php foreach ($mobil as $mb): ?>
+            <div class="col-lg-6 col-md-6 <?= $mb->kode_type ?>">
+                <div class="single-popular-car">
+                    <div class="p-car-thumbnails">
+                        <a class="car-hover" href="<?= base_url('assets/upload/' . $mb->gambar) ?>">
+                            <img style="height: 300px" src="<?= base_url('assets/upload/' . $mb->gambar) ?>" alt="<?= $mb->merek ?>">
+                        </a>
+                    </div>
+                    <div class="p-car-content">
+                        <h3>
+                            <a href="<?= base_url('customer/data_mobil/detail_mobil/') . $mb->id_mobil ?>"><?= $mb->merek ?></a>
+                            <span class="price"><i class="fa fa-tag"></i>Rp. <?= number_format($mb->harga, 0, ',', '.') ?></span>
+                        </h3>
+                        <h5><?= $mb->nama_rental ?></h5>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <!-- Paginasi -->
+    <div class="pagination text-center d-flex justify-content-end">
+    <?= $pager->links() ?>
+</div>
+
+<div class="col-lg-9">
+        <div class="row popular-car-grid">
+          <?php foreach ($mobil as $mb): ?>
+            <div class="col-lg-4 col-md-6 mb-4 <?= $mb->kode_type ?>">
+              <div class="single-popular-car">
+                <div class="p-car-thumbnails">
+                  <a class="car-hover" href="<?= base_url('assets/upload/' . $mb->gambar) ?>">
+                    <img class="img-fluid" style="height: 300px;" src="<?= base_url('assets/upload/' . $mb->gambar) ?>" alt="<?= $mb->merek ?>">
+                  </a>
+                </div>
+                <div class="p-car-content">
+                  <h3>
+                    <a href="<?= base_url('customer/data_mobil/detail_mobil/') . $mb->id_mobil ?>"><?= $mb->merek ?></a>
+                    <span class="price"><i class="fa fa-tag"></i>Rp. <?= number_format($mb->harga, 0, ',', '.') ?></span>
+                  </h3>
+                  <h5><?= $mb->nama_rental ?></h5>
+                </div>
+              </div>
+            </div>
+          <?php endforeach; ?>
+        </div>
+        <div class="pagination text-center d-flex justify-content-end">
+          <?= $pager->links() ?>
+        </div>
+<script>
+    // Menambahkan parameter type ke setiap link pagination
+    $(document).ready(function(){
+        $('.pagination a').each(function(){
+            var url = new URL($(this).attr('href'));
+            var type = new URLSearchParams(window.location.search).get('type');
+            if (type) {
+                url.searchParams.set('type', type);
+            }
+            $(this).attr('href', url.toString());
+        });
+    });
+</script>
+</div>
+                                <!-- Choose Content-wrap -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Choose Area Content End -->
+            </div>
+        </div>
+    </section>
+    <!--== Choose Car Area End ==-->
+
+     
+
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h3>Contact</h3>
+          <span class="title-line"><i class="fa fa-comments"></i></span>
+          <p>Hubungi kami untuk mengetahui lebih banyak. Dapatkan layanan terbaik dan prioritas dari kami.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-5 d-flex align-items-stretch">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>Kota Bekasi, Jawa Barat , Indonesia</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>layanan@jualbelimobilsecond.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+62 895 3080 7615</p>
+              </div>
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253814.04310403793!2d106.80855868501695!3d-6.284172398250342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698c6900964f69%3A0xd00495351896398!2sBekasi%2C%20Kota%20Bks%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1738730151981!5m2!1sid!2sid" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+            </div>
+
+          </div>
+
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+          <form action="<?php echo base_url(); ?>Admin/Contact/simpan_post/" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="name">Your Name</label>
+                  <input type="text" name="txtName" class="form-control" id="name" required>
+                </div>
+                <div class="form-group col-md-6 mt-3 mt-md-0">
+                  <label for="name">Your Email</label>
+                  <input type="email" class="form-control" name="txtEmail" id="email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <label for="name">Your Phone Number</label>
+                <input type="text" class="form-control" name="txtPhone" id="subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <label for="name">Message</label>
+                <textarea class="form-control" name="txtMsg" rows="10" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+    <br><br>
+
+    ===========================================================================================================================================================
+
+    
+
+<!--== SlideshowBg Area Start ==-->
+<div class="banner_section layout_padding">
+  <div id="my_slider" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="3000">
+        <img src="<?php echo base_url() ?>assets/assets_shop/img/Spanduk Jual Beli Mobil Bekas (2).png" class="d-block w-100 carousel-img" alt="Car Image">
+      </div>
+      <div class="carousel-item" data-bs-interval="3000">
+        <img src="<?php echo base_url() ?>assets/assets_shop/img/1.png" class="d-block w-100 carousel-img" alt="Car Image">
+      </div>
+      <div class="carousel-item" data-bs-interval="3000">
+        <img src="<?php echo base_url() ?>assets/assets_shop/img/2.png" class="d-block w-100 carousel-img" alt="Car Image">
+      </div>
+    </div>
+
+    <!-- Tombol Navigasi Carousel -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#my_slider" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#my_slider" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div> 
+<!-- banner section end -->
+
+<!--== Partner Area Start ==-->
+<div id="partner-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="partner-content-wrap d-flex justify-content-center flex-wrap">
+                    <!-- Daftar Logo -->
+                    <?php 
+                    $logos = [
+                        ["src" => base_url() . "assets/assets_shop/img/toyota.png", "alt" => "Toyota"],
+                        ["src" => base_url() . "assets/assets_shop/img/daihatsu.png", "alt" => "Daihatsu"],
+                        ["src" => "https://www.carlogos.org/car-logos/mitsubishi-logo.png", "alt" => "Mitsubishi"],
+                        ["src" => "https://www.carlogos.org/car-logos/suzuki-logo.png", "alt" => "Suzuki"],
+                        ["src" => "https://logos-world.net/wp-content/uploads/2020/04/BMW-Logo.png", "alt" => "BMW"],
+                        ["src" => base_url() . "assets/assets_shop/img/mersi.png", "alt" => "Mercedes-Benz"],
+                        ["src" => base_url() . "assets/assets_shop/img/honda.png", "alt" => "Honda"],
+                        ["src" => base_url() . "assets/assets_shop/img/nissan.png", "alt" => "Nissan"]
+                    ];
+                    ?>
+
+                    <?php foreach ($logos as $logo) : ?>
+                        <div class="single-partner mx-3">
+                            <div class="display-table">
+                                <div class="display-table-cell">
+                                    <img src="<?= esc($logo['src']) ?>" alt="<?= esc($logo['alt']) ?>">
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--== Partner Area End ==-->
+
+
+<!--== Fun Fact Area Start ==-->
+<!-- <section id="funfact-area" class="bg-dark text-white py-5">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="single-funfact">
+          <i class="fa fa-smile-o fa-3x mb-3"></i>
+          <p class="display-4">+ <span class="counter">1200</span></p>
+          <h4>CUSTOMER</h4>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="single-funfact">
+          <i class="fa fa-gamepad fa-3x mb-3"></i>
+          <p class="display-4">+ <span class="counter">500</span></p>
+          <h4>MOBIL TERSEDIA</h4>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="single-funfact">
+          <i class="fa fa-bank fa-3x mb-3"></i>
+          <p class="display-4">+ <span class="counter">300</span></p>
+          <h4>PENYEDIA MOBIL</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!--== Fun Fact Area End ==-->
+
+<!--== Choose Car Area Start ==-->
+<section id="choose-car" class="section-padding">
+  <div class="container">
+    <div class="row text-center mb-5">
+      <div class="col-lg-12">
+        <div class="section-title">
+          <h3>Pilih Mobil Anda</h3>
+          <span class="title-line"><i class="fa fa-car"></i></span>
+          <p>Mobil Pilihan Terbaik Untuk Memberikan Anda Kenyamanan</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+    <!-- Choose Area Content Start -->
+    <div class="col-lg-12">
+        <div class="choose-ur-cars">
+            <div class="row">
+                <div class="col-lg-3">
+                    <!-- Choose Filtering Menu Start -->
+                    <div class="home2-car-filter">
+                      
+                        <div class="home2-car-filter">
+    <a href="#" data-filter="*" class="active">all</a>
+    <?php foreach ($types as $tp): ?>
+        <a href="#" data-filter=".<?= $tp->kode_type ?>"><?= $tp->nama_type ?></a>
+    <?php endforeach; ?>
+</div>
+
+                    </div>
+                    <!-- Choose Filtering Menu End -->
+                </div>
+                <div class="col-lg-9">
+    
+    <div class="row popular-car-gird">
+        <?php foreach ($mobil as $mb): ?>
+            <div class="col-lg-4 col-md-6 mb-4 <?=$mb['kode_type'] ?>">
+                <div class="single-popular-car">
+                    <div class="p-car-thumbnails">
+                        <a class="car-hover" href="<?= base_url('assets/upload/' . $mb['gambar']) ?>">
+                            <img style="height: 300px" src="<?= base_url('assets/upload/' . $mb['gambar']) ?>" alt="<?= $mb['merek'] ?>">
+                        </a>
+                    </div>
+                    <div class="p-car-content">
+                        <h3>
+                            <a href="<?= base_url('customer/data_mobil/detail_mobil/') . $mb['id_mobil'] ?>"><?= $mb['merek'] ?></a>
+                            <span class="price"><i class="fa fa-tag"></i>Rp. <?= number_format($mb['harga'], 0, ',', '.') ?></span>
+                        </h3>
+                        <h5><?= $mb['nama_rental'] ?></h5>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <!-- Paginasi -->
+    <div class="pagination text-center d-flex justify-content-end">
+    <?= $pager->links() ?>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--== Choose Car Area End ==-->
+
+
+<!--== Contact Area End ==-->
+
+<style>
+    .single-partner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px; /* Memberikan ukuran tetap */
+        height: 80px;
+        margin: 10px;
+    }
+
+    .single-partner img {
+        max-width: 70px !important;  /* Batasi ukuran maksimum */
+        max-height: 70px !important;
+        width: auto;
+        height: auto;
+        object-fit: contain; /* Pastikan gambar tidak terpotong */
+    }
+</style>

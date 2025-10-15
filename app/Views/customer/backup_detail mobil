@@ -1,0 +1,108 @@
+<div class="container mt-5 mb-5 ">
+	
+	<div class="card" style="margin-top: 170px">
+		<div class="card-body">
+			<?php foreach ($detail as $dt) : ?>
+				<div class="row">
+					<div class="col-md-5">
+						<img style="width: 90%" src="<?php echo base_url('assets/upload/' . $dt->gambar) ?>">
+					</div>
+					<div class="col-md-7">
+						<table class="table">
+							<tr>
+								
+								<th>Merek</th>
+								<td><?php echo $dt->merek ?></td>
+
+							</tr>
+							<tr>
+								
+								<th>Model</th>
+								<td><?php echo $dt->model ?></td>
+
+							</tr>
+
+							<tr>
+								
+								<th>Versi</th>
+								<td><?php echo $rental[0]->versi ?></td>
+
+							</tr>
+							<tr>
+								
+								<th>Kondisi</th>
+								<td><?php echo $dt->kondisi	 ?></td>
+
+							</tr>
+							<tr>
+								
+								<th>Transmisi</th>
+								<td><?php echo $dt->transmisi ?></td>
+
+							</tr>
+							<tr>
+								
+								<th>Kilometer</th>
+								<td><?php echo $dt->kilometer ?></td>
+
+							</tr>
+							<tr>
+								
+								<th>Tipe Mobil</th>
+								<td><?php echo $dt->tipe_mobil ?></td>
+
+							</tr>
+							<tr>
+								
+								<th>Warna</th>
+								<td><?php echo $dt->warna ?></td>
+
+							</tr>
+							<tr>
+								
+								<th>Tahun Produksi</th>
+								<td><?php echo $dt->tahun_produksi ?></td>
+
+							</tr>
+							
+								
+								<th>Status</th>
+								<td>
+
+									<?php 
+										if($dt->status == '1'){
+											echo "Tersedia";
+										}else{
+											echo "Tidak Tersedia/Sedang dirental";
+										}
+									?>
+						
+								</td>
+
+							</tr>
+							<tr>
+								
+								<td></td>
+								<td>
+									 <?php 
+
+					                    if($dt->status == "0"){
+					                      echo "<span class='btn btn-danger disabled'>Telah di Rental</span>";
+					                    }else{
+					                      echo anchor('customer/rental/tambah_rental/' . $dt->id_mobil, '<button class="btn btn-success"> Rental </button>');
+					                    }
+
+					                  ?>
+								</td>
+								</td>
+
+							</tr>
+
+						</table>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	</div>
+
+</div>
